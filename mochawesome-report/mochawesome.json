@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-06T07:12:00.422Z",
+    "end": "2023-07-06T07:12:28.814Z",
+    "duration": 28392,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "99a9dbfc-8e7d-4ca3-9f99-b95598dee6eb",
+      "title": "",
+      "fullFile": "cypress\\integration\\examples\\Cross_Origin_Handling.js",
+      "file": "cypress\\integration\\examples\\Cross_Origin_Handling.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a920d286-f248-4efa-99f1-e0ccb4074f85",
+          "title": "Automation practice)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "testing child window",
+              "fullTitle": "Automation practice) testing child window",
+              "timedOut": null,
+              "duration": 26468,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('url') + \"/AutomationPractice/\");\n//Handling child window and cross origi issue\ncy.get('#opentab').then(function (el) {\n  const url = el.prop('href');\n  cy.visit(url); // https://www.qaclickacademy.com/\n  cy.origin(url, () => {\n    cy.get('div.sub-menu-bar a[href=\"about.html\"]').click();\n    cy.wait(5000);\n    cy.go('back');\n    cy.wait;\n    cy.go('back');\n  });\n});",
+              "err": {},
+              "uuid": "74c715e0-7c2c-4341-8046-af6823a8ef96",
+              "parentUUID": "a920d286-f248-4efa-99f1-e0ccb4074f85",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "74c715e0-7c2c-4341-8046-af6823a8ef96"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 26468,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

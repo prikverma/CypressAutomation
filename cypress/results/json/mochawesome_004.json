@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-12T09:58:37.364Z",
+    "end": "2023-07-12T09:58:51.067Z",
+    "duration": 13703,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8395acfd-ea0d-413d-a6d9-ebce8be22570",
+      "title": "",
+      "fullFile": "cypress\\integration\\examples\\TestFramework.js",
+      "file": "cypress\\integration\\examples\\TestFramework.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d818e6bd-c2e0-4356-b0fa-46238e988bc5",
+          "title": "Frame example",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "iframe handling on web",
+              "fullTitle": "Frame example iframe handling on web",
+              "timedOut": null,
+              "duration": 10765,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const homePage = new _Homepage.default();\nconst shoppage = new _ShopPage.default();\nconst checkoutPage = new _CheckoutPage.default();\ncy.visit(Cypress.env('url') + \"/angularpractice/\");\nvar sum = 0;\nhomePage.getEditBox().type(this.data.name);\nhomePage.getGender().select(this.data.gender);\n// validating data on form \nhomePage.getTwoWayBox().should(\"have.value\", this.data.name);\nhomePage.getEditBox().should(\"have.attr\", \"minlength\", 2); // validating box can accept min value 2\nhomePage.getEntreprenour().should(\"be.disabled\");\n// shop click and going to item list\nshoppage.getshopTab().click();\n// custom command logic is in /support/command.js\nthis.data.productName.forEach(element => {\n  // for array in js we use forEach\n  cy.selectProduct(element);\n});\nshoppage.getcheckoutbox().click();\n// Calculating total price on checkout page\nshoppage.gettotalprice().each((el, index, list) => {\n  var textprice = el.text();\n  var tprice = textprice.split(\" \"); /// it will create array splited\n  tprice = tprice[1].trim();\n  sum = Number(sum) + Number(tprice);\n}).then(function () {\n  // it is used for resolving promises \n  cy.log(sum);\n});\nshoppage.gettotalamount().then(function (ttp) {\n  var ttprice = ttp.text();\n  var tttprice = ttprice.split(\" \"); // it will create array splitted\n  tttprice = Number(tttprice[1].trim());\n  expect(tttprice).to.equal(sum);\n});\ncheckoutPage.getcheckoutButton().click();\ncheckoutPage.getdeliveryBox().type('India');\ncheckoutPage.getcountryList().click();\ncheckoutPage.getcheckBox().click({\n  force: true\n});\ncheckoutPage.getpurchaseButton().click();\ncheckoutPage.getalert().then(text => {\n  const gettext = text.text();\n  expect(gettext.includes(\"Success\")).to.be.true;\n});",
+              "err": {},
+              "uuid": "18945686-aeb0-4fa0-b391-6a97c11d1fe3",
+              "parentUUID": "d818e6bd-c2e0-4356-b0fa-46238e988bc5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "18945686-aeb0-4fa0-b391-6a97c11d1fe3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10765,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

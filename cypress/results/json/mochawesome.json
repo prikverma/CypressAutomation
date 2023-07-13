@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-12T09:57:06.830Z",
+    "end": "2023-07-12T09:57:35.925Z",
+    "duration": 29095,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2d4dffe2-8ae8-4315-9543-cee67414e8d0",
+      "title": "",
+      "fullFile": "cypress\\integration\\examples\\Cross_Origin_Handling.js",
+      "file": "cypress\\integration\\examples\\Cross_Origin_Handling.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "01c100f2-8ec3-42fc-ba22-da6259d2b7b0",
+          "title": "Automation practice)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "testing child window",
+              "fullTitle": "Automation practice) testing child window",
+              "timedOut": null,
+              "duration": 25405,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('url') + \"/AutomationPractice/\");\n//Handling child window and cross origi issue\ncy.get('#opentab').then(function (el) {\n  const url = el.prop('href');\n  cy.visit(url); // https://www.qaclickacademy.com/\n  cy.origin(url, () => {\n    cy.get('div.sub-menu-bar a[href=\"about.html\"]').click();\n    cy.wait(5000);\n    cy.go('back');\n    cy.wait;\n    cy.go('back');\n  });\n});",
+              "err": {},
+              "uuid": "37c8265d-c502-4069-bf29-58b0287c8183",
+              "parentUUID": "01c100f2-8ec3-42fc-ba22-da6259d2b7b0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "37c8265d-c502-4069-bf29-58b0287c8183"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 25405,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

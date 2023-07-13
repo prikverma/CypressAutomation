@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-12T09:57:55.329Z",
+    "end": "2023-07-12T09:58:20.414Z",
+    "duration": 25085,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d65ed653-aebd-4392-9c02-0bbd40e099d1",
+      "title": "",
+      "fullFile": "cypress\\integration\\examples\\PracticeAll.js",
+      "file": "cypress\\integration\\examples\\PracticeAll.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "592c5e2d-b5c4-4be6-91d8-3ea5aeac60c8",
+          "title": "My First Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "my first test case",
+              "fullTitle": "My First Test Suite my first test case",
+              "timedOut": null,
+              "duration": 22569,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test case for check box\ncy.visit(Cypress.env('url') + \"/AutomationPractice/\");\n// cy.get('#checkBoxOption1').check().should('be.checked').and('have.value','option1')\n// cy.get('#checkBoxOption1').uncheck()\n// cy.get('input[type=\"checkbox\"]').check(['option2','option3']).should('be.checked')\n// // Test case for static dropdown\n// cy.get('#dropdown-class-example').select('Option2').should('have.value','option2')\n//handling dynamic dropdown\ncy.get('#autocomplete').type('Ind');\ncy.get('.ui-menu-item div').each(($el, index, $list) => {\n  if ($el.text() === 'India') {\n    cy.wrap($el).click();\n  }\n});\n//visibility/invisibility of elements\ncy.get('#displayed-text').should('be.visible');\ncy.get('#hide-textbox').click();\ncy.get(cy.get('#displayed-text').should('not.be.visible'));\ncy.get('#show-textbox').click();\ncy.get('#displayed-text').should('be.visible');\n// How to handle window alert on web\ncy.get('#alertbtn').click();\ncy.get('#confirmbtn').click();\ncy.on('window:alert', str => {\n  expect(str).to.equal(\"Hello , share this practice page and share your knowledge\");\n});\ncy.on('window:confirm', str => {\n  expect(str).to.equal(\"Hello , Are you sure you want to confirm?\");\n});\n//handling child tab on the same browser\ncy.get('#opentab').invoke('removeAttr', 'target').click();\ncy.origin('https://www.qaclickacademy.com/', () => {\n  cy.wait(5000);\n  cy.go('back');\n});\n//** */ handling web table(Imp for interview)\ncy.get('tr td:nth-child(2)').each(($el, index, $list) => {\n  const text = $el.text();\n  if (text.includes('Python')) {\n    cy.get('tr td:nth-child(2)').eq(index).next().then(function (price) {\n      const pricetext = price.text();\n      expect(pricetext).to.equal('25');\n    });\n  }\n});\n// handling mouse hover using jquery \ncy.get('.mouse-hover-content').invoke('show');\ncy.contains('Top').click();\n// or we can use force: true for clicking on hidden element also\n// cy.contains('top').click({force: true})\ncy.url().should('include', 'top');",
+              "err": {},
+              "uuid": "815af3d7-aa0d-4197-8b9f-ef70fa4fd37a",
+              "parentUUID": "592c5e2d-b5c4-4be6-91d8-3ea5aeac60c8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "815af3d7-aa0d-4197-8b9f-ef70fa4fd37a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 22569,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
